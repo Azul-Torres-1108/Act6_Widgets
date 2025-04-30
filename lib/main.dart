@@ -1,41 +1,114 @@
 import 'package:flutter/material.dart';
+import 'pantalla1.dart';
+import 'pantalla2.dart';
+import 'pantalla3.dart';
+import 'pantalla4.dart';
+import 'pantalla5.dart';
+import 'pantalla6.dart';
+import 'pantalla7.dart';
+import 'pantalla8.dart';
+import 'pantalla9.dart';
+import 'pantalla10.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      title: 'Pantalla Única',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const InicioPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+class InicioPage extends StatelessWidget {
+  const InicioPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
+        backgroundColor: const Color(0xFFB2DFDB), // Color pastel
+        elevation: 0,
+        centerTitle: true,
+        title: Column(
+          children: const [
+            Text(
+              'Mederyth Azul Torres',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              '22308051281108',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                for (var i = 1; i <= 10; i++) ...[
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            switch (i) {
+                              case 1:
+                                return const Pantalla1();
+                              case 2:
+                                return const Pantalla2();
+                              case 3:
+                                return const Pantalla3();
+                              case 4:
+                                return const Pantalla4();
+                              case 5:
+                                return const Pantalla5();
+                              case 6:
+                                return const Pantalla6();
+                              case 7:
+                                return const Pantalla7();
+                              case 8:
+                                return const Pantalla8();
+                              case 9:
+                                return const Pantalla9();
+                              case 10:
+                                return const Pantalla10();
+                              default:
+                                return const Pantalla1();
+                            }
+                          },
+                        ),
+                      );
+                    },
+                    child: Text('Ir a Pantalla $i'),
+                  ),
+                  const SizedBox(height: 5),
+                ],
+              ],
+            ),
+          ),
         ),
       ),
     );
